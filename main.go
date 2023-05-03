@@ -2,12 +2,11 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func main() {
-	arr1 := []string{"a", "a", "a", "b", "b", "c"}
-	arr2 := []string{"b", "c", "d", "d", "d"}
+	arr1 := []interface{}{"a", "a", "a", "b", "b", "c"}
+	arr2 := []interface{}{"b", "c", "d", "d", "d"}
 	fmt.Println("Input array : ")
 	fmt.Println("array 1", arr1)
 	fmt.Println("array 2", arr2)
@@ -20,21 +19,20 @@ func main() {
 	fmt.Println("Union     :", result1)
 	fmt.Println("Difference:", result2)
 }
-func removeDuplicates(arr []string) []string {
-	m := make(map[string]bool)
-	uniqueArr := []string{}
+func removeDuplicates(arr []interface{}) []interface{} {
+	m := make(map[interface{}]bool)
+	uniqueArr := []interface{}{}
 	for _, item := range arr {
 		m[item] = true
 	}
 	for key := range m {
 		uniqueArr = append(uniqueArr, key)
 	}
-	sort.Strings(uniqueArr)
 	return uniqueArr
 }
-func cal_array(ar1 []string, ar2 []string) ([]string, []string) {
+func cal_array(ar1 []interface{}, ar2 []interface{}) ([]interface{}, []interface{}) {
 	//union
-	m := make(map[string]bool)
+	m := make(map[interface{}]bool)
 	union := ar1
 	for _, item := range union {
 		m[item] = true
@@ -46,8 +44,8 @@ func cal_array(ar1 []string, ar2 []string) ([]string, []string) {
 		}
 	}
 	//diff
-	different := []string{}
-	m = make(map[string]bool)
+	different := []interface{}{}
+	m = make(map[interface{}]bool)
 
 	for _, item := range ar2 {
 		m[item] = true
@@ -59,7 +57,7 @@ func cal_array(ar1 []string, ar2 []string) ([]string, []string) {
 		}
 	}
 
-	m = make(map[string]bool)
+	m = make(map[interface{}]bool)
 	for _, item := range ar1 {
 		m[item] = true
 	}
